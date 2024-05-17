@@ -5,10 +5,10 @@
 Assuming [Go is installed](https://go.dev/doc/install), you can run a quick test with
 
 ``` shell
-go run github.com/mikkelricky/hosts-harker@latest show
+go run github.com/mikkelricky/hosts-harker@latest --help
 ```
 
-to list all code blocks in `README.md` in the current folder.
+to see what Hosts harker cat do for you.
 
 ## Installation
 
