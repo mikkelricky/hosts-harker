@@ -1,0 +1,28 @@
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+name: Publish
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+    - name: Get the tag
+      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable
+      run: |
+        echo "GIT_TAG=${GITHUB_REF/refs\/tags\//}" >> "$GITHUB_ENV"
+
+    - name: Publish
+      # https://go.dev/doc/modules/publishing
+      run: |
+        GOPROXY=proxy.golang.org go list -m "github.com/mikkelricky/hosts-harker@$GIT_TAG"
