@@ -1,4 +1,4 @@
-module mikkelricky/hosts-harker
+module github.com/mikkelricky/hosts-harker
 
 go 1.22.3
 
